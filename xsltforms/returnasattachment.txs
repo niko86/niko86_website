@@ -1,4 +1,4 @@
-<txs:scriptsheet xmlns:txs="http://www.agencexml.com/txs" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<txs:scriptsheet xmlns:"bozo.com" xmlns:txs="http://www.agencexml.com/txs" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:stylesheet version="1.0" txs:name="main">
 		<xsl:template match="/">
 			<txs:return contenttype="application/xml" filename="myfile.xml" format="xml">
