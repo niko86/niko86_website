@@ -1047,10 +1047,17 @@ switch($format) {
 		}
 		break;
 	case "text":
-		if(substr($content, 0, 9) == "postdata=%3Cbalance+xmlns%3D%22%22%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ESalery%3C%2Fdesc%3E%3Cwithdraw%3Efalse%3C%2Fwithdraw%3E%3Camount%3E5000.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ENews+Paper%3C%2Fdesc%3E%3Cwithdraw%3Etrue%3C%2Fwithdraw%3E%3Camount%3E2.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctotals%3E%3Cin%3E5000%3C%2Fin%3E%3Cout%3E2%3C%2Fout%3E%3Ctotal%3E4998%3C%2Ftotal%3E%3C%2Ftotals%3E%3C%2Fbalance%3E
-<balance xmlns=""><transaction><date>2004-05-06</date><desc>Salery</desc><withdraw>false</withdraw><amount>5000.00</amount></transaction><transaction><date>2004-05-06</date><desc>News Paper</desc><withdraw>true</withdraw><amount>5</amount></transaction><totals><in>5000</in><out>5</out><total>4995</total></totals></balance>
-<balance xmlns=""><transaction><date>2004-05-06</date><desc>Salery</desc><withdraw>false</withdraw><amount>5000.00</amount></transaction><transaction><date>2004-05-06</date><desc>News Paper</desc><withdraw>true</withdraw><amount>5</amount></transaction><totals><in>5000</in><out>5</out><total>4995</total></totals></balance>
-postdata=%3Cbalance+xmlns%3D%22%22%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ESalery%3C%2Fdesc%3E%3Cwithdraw%3Efalse%3C%2Fwithdraw%3E%3Camount%3E5000.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ENews+Paper%3C%2Fdesc%3E%3Cwithdraw%3Etrue%3C%2Fwithdraw%3E%3Camount%3E2.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctotals%3E%3Cin%3E5000%3C%2Fin%3E%3Cout%3E2%3C%2Fout%3E%3Ctotal%3E4998%3C%2Ftotal%3E%3C%2Ftotals%3E%3C%2Fbalance%3E
-<balance xmlns=""><transaction><date>2004-05-06</date><desc>Salery</desc><withdraw>false</withdraw><amount>5000.00</amount></transaction><transaction><date>2004-05-06</date><desc>News Paper</desc><withdraw>true</withdraw><amount>2.00</amount></transaction><totals><in>5000</in><out>2</out><total>4998</total></totals></balance>
-postdata=%3Cbalance+xmlns%3D%22%22%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ESalery%3C%2Fdesc%3E%3Cwithdraw%3Efalse%3C%2Fwithdraw%3E%3Camount%3E5000.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctransaction%3E%3Cdate%3E2004-05-06%3C%2Fdate%3E%3Cdesc%3ENews+Paper%3C%2Fdesc%3E%3Cwithdraw%3Etrue%3C%2Fwithdraw%3E%3Camount%3E2.00%3C%2Famount%3E%3C%2Ftransaction%3E%3Ctotals%3E%3Cin%3E5000%3C%2Fin%3E%3Cout%3E2%3C%2Fout%3E%3Ctotal%3E4998%3C%2Ftotal%3E%3C%2Ftotals%3E%3C%2Fbalance%3E
-</€Ìÿÿ>
+		if(substr($content, 0, 9) == "<![CDATA[") {
+			$content = substr($content, 9, strlen($content)-12);
+		} else {
+			$content = html_entity_decode($content);
+		}
+	default:
+		header("Content-Type: ".$ctype);
+		if( $attfn != "" ) {
+			//header('Content-Disposition: attachment; filename="'.$attfn.'"');
+		}
+		echo $content;
+		break;
+}
+?>
