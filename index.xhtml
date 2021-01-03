@@ -12,6 +12,9 @@
 				<test>Something</test>
 			</keylab>
 		</xforms:instance>
+
+		<xf:submission id="s01" method="xml-urlencoded-post" action="file:///temp/ex1order.xml" /> 
+
 		<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
 			resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
 			<xforms:message level="modeless" ev:event="xforms-submit-error">Submit error.</xforms:message>
@@ -29,7 +32,7 @@
 
 	<xforms:output ref="test"/>
 
-	<xforms:submit submission="output">
+	<xforms:submit submission="s01">
 		<xforms:label>Save As</xforms:label>
 	</xforms:submit>
 	<xforms:trigger>
