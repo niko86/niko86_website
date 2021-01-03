@@ -1,4 +1,5 @@
 <?php
+// Version taken from txs.php file here: https://declarative.amsterdam/show?page=da-tutorial-xforms
 // Copyright (C) 2008-2010 Alain COUTHURES <agenceXML>
 //
 // This program is free software; you can redistribute it and/or
