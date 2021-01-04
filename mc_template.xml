@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-16"?>
+<keylab content="schedule" timestamp="2021-01-03T07:47:56" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
+  <test-definitions>
+    <test-definition name="Water Content" code="WCS">
+      <properties>
+        <property name="DateOfTest" unit="" />
+        <property name="AcceptedMassOfContainerAndDrySoil" unit="" />
+        <property name="ContainerMass" unit="" />
+        <property name="MassContainerAndWetSoil" unit="" />
+        <property name="ContainerNumber" unit="" />
+        <property name="OvenTemperature" unit="" />
+        <property name="SpecimenDescription" unit="" />
+      </properties>
+    </test-definition>
+  </test-definitions>
+  <project id="Geolab2020" name="2020 Proficiency Scheme">
+    <client name="" />
+    <samples>
+      <sample id="klid202003180">
+        <metadata>
+          <metadatum name="Location" value="1" />
+          <metadatum name="SpecimentCount" value="1" />
+          <metadatum name="TopDepth" value="0" />
+          <metadatum name="Type" value="B" />
+        </metadata>
+        <test code="WCS" specimen="1">
+          <general>
+            <readings>
+              <reading>
+                <measurement name="AcceptedMassOfContainerAndDrySoil" value="93.69" />
+              </reading>
+              <reading>
+                <measurement name="ContainerMass" value="16.29" />
+              </reading>
+              <reading>
+                <measurement name="DateOfTest" value="43913" />
+              </reading>
+              <reading>
+                <measurement name="MassContainerAndWetSoil" value="115.9" />
+              </reading>
+              <reading>
+                <measurement name="OvenTemperature" value="105" />
+              </reading>
+              <reading>
+                <measurement name="SpecimenDescription" value="Brown slightly sandy CLAY" />
+              </reading>
+            </readings>
+          </general>
+        </test>
+      </sample>
+    </samples>
+  </project>
+</keylab>
