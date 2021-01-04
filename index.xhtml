@@ -1,19 +1,18 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
 <?xsltforms-options debug="yes"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xforms="http://www.w3.org/2002/xforms"
-	xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<html xmlns="http://www.keynetix.com/XSD/KeyLAB/Export" xmlns:x="http://www.w3.org/1999/xhtml"
+	xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 <head>
 	<title>Balance</title>
 
 	<xforms:model>
 		<xforms:instance>
-			<keylab content="schedule" timestamp="12/12/2020" xmlns="" xmlns:ai="http://www.keynetix.com/XSD/KeyLAB/Export">
+			<keylab content="schedule" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
 				<test>Something</test>
 			</keylab>
 		</xforms:instance>
-
-		<xf:submission id="s01" method="xml-urlencoded-post" action="file:///temp/ex1order.xml" /> 
 
 		<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
 			resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
@@ -28,9 +27,13 @@
 		<xforms:input ref="test">
 			<xforms:label>Test Data</xforms:label>
 		</xforms:input>
+
+		<xforms:input ref="@timestamp">
+			<xforms:label>Test Data</xforms:label>
+		</xforms:input>
 	</xforms:group>
 
-	<xforms:output ref="test"/>
+	<xforms:output ref="test" />
 
 	<xforms:submit submission="output">
 		<xforms:label>Save As</xforms:label>
