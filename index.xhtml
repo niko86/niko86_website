@@ -15,8 +15,8 @@
 
 			</xforms:instance>
 
-			<xf:bind id="TimeStamp" nodeset="@timestamp" type="xs:dateTime"/>
-			<xf:bind id="Test" nodeset="//[local-name()='test']" type="xs:string"/>
+			<xforms:bind id="TimeStamp" nodeset="@timestamp" type="xs:dateTime"/>
+			<xforms:bind id="Test" nodeset="//[local-name()='test']" type="xs:string"/>
 
 			<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
 				resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
