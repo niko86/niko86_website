@@ -1,13 +1,9 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
-<?css-conversion no?>
-<!--<?xsltforms-options debug="yes"?>-->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ev="http://www.w3.org/2001/xml-events">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <title>Water Content</title>
     <xf:model>
 
@@ -56,42 +52,74 @@
 </head>
 
 <body>
-    <table class="table table-striped">
+    <table>
         <tr>
-            <th scope="col">Property</th>
-            <th scope="col">Value</th>
+            <th>Property</th>
+            <th>Value</th>
         </tr>
         <tr>
-            <td><xf:label>Time Stamp:</xf:label></td>
-            <td><xf:input bind="Timestamp" /></td>
+            <td>
+                <xf:label>Time Stamp:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="Timestamp" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Specimen Description:</xf:label></td>
-            <td><xf:textarea bind="SpecimenDescription" /></td>
+            <td>
+                <xf:label>Specimen Description:</xf:label>
+            </td>
+            <td>
+                <xf:textarea bind="SpecimenDescription" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Test Date:</xf:label></td>
-            <td><xf:input bind="DateOfTest" /></td>
+            <td>
+                <xf:label>Test Date:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="DateOfTest" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Container Number:</xf:label></td>
-            <td><xf:input bind="ContainerNumber" /></td>
+            <td>
+                <xf:label>Container Number:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="ContainerNumber" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Container Mass:</xf:label></td>
-            <td><xf:input bind="ContainerMass" /></td>
+            <td>
+                <xf:label>Container Mass:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="ContainerMass" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Wet Mass:</xf:label></td>
-            <td><xf:input bind="MassContainerAndWetSoil" /></td>
+            <td>
+                <xf:label>Wet Mass:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="MassContainerAndWetSoil" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Oven Temperature:</xf:label></td>
-            <td><xf:input bind="OvenTemperature" /></td>
+            <td>
+                <xf:label>Oven Temperature:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="OvenTemperature" />
+            </td>
         </tr>
         <tr>
-            <td><xf:label>Dry Mass:</xf:label></td>
-            <td><xf:input bind="AcceptedMassOfContainerAndDrySoil" /></td>
+            <td>
+                <xf:label>Dry Mass:</xf:label>
+            </td>
+            <td>
+                <xf:input bind="AcceptedMassOfContainerAndDrySoil" />
+            </td>
         </tr>
     </table>
 
