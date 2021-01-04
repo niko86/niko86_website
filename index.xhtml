@@ -47,7 +47,7 @@
         <xforms:variable name="filename" select="{//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}"/>
 
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
-            resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file={//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}.xml">
+            resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file={$filename}.xml">
             <xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
         </xf:submission>
 
