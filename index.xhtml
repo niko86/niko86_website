@@ -9,7 +9,7 @@
 	<xforms:model>
 		<xforms:instance>
 			<keylab content="schedule" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
-				<test>Something</test>
+				<test xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">Something</test>
 			</keylab>
 		</xforms:instance>
 
@@ -37,6 +37,7 @@
 	<xforms:submit submission="output">
 		<xforms:label>Save As</xforms:label>
 	</xforms:submit>
+
 	<xforms:trigger>
 		<xforms:label>Reset</xforms:label>
 		<xforms:dispatch name="xforms-reset" target="default-model" ev:event="DOMActivate" />
