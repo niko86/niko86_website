@@ -1,5 +1,5 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
-<?xsltforms-options debug="yes"?>
+<!--<?xsltforms-options debug="yes"?>-->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ev="http://www.w3.org/2001/xml-events">
@@ -45,7 +45,7 @@
         </xf:action>
 
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
-            resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
+            resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file={//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}.xml">
             <xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
         </xf:submission>
 
