@@ -15,6 +15,9 @@
 
 			</xforms:instance>
 
+			<xf:bind id="TimeStamp" nodeset="@timestamp" type="xs:dateTime"/>
+			<xf:bind id="Test" nodeset="//[local-name()='test']" type="xs:string"/>
+
 			<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
 				resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
 				<xforms:message level="modeless" ev:event="xforms-submit-error">Submit error.</xforms:message>
@@ -25,11 +28,11 @@
 	<body>
 
 		<xforms:group>
-			<xforms:input ref="//[local-name()='test']">
+			<xforms:input ref="Test">
 				<xforms:label>Test Data</xforms:label>
 			</xforms:input>
 
-			<xforms:input ref="@timestamp">
+			<xforms:input ref="TimeStamp">
 				<xforms:label>Timestamp</xforms:label>
 			</xforms:input>
 		</xforms:group>
