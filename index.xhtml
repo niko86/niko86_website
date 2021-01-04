@@ -1,48 +1,51 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
 <?xsltforms-options debug="yes"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xforms="http://www.w3.org/2002/xforms"
-	xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:my="http://www.keynetix.com/XSD/KeyLAB/Import">
 
-<head>
-	<title>Balance</title>
+	<head>
+		<title>Balance</title>
 
-	<xforms:model>
-		<xforms:instance>
-			<keylab content="schedule" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
-				<test xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">Something</test>
-			</keylab>
-		</xforms:instance>
+		<xforms:model>
+			<xforms:instance>
 
-		<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
-			resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
-			<xforms:message level="modeless" ev:event="xforms-submit-error">Submit error.</xforms:message>
-		</xforms:submission>
-	</xforms:model>
-</head>
+				<keylab content="results" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Import">
+					<test>Something</test>
+				</keylab>
 
-<body>
+			</xforms:instance>
 
-	<xforms:group>
-		<xforms:input ref="test">
-			<xforms:label>Test Data</xforms:label>
-		</xforms:input>
+			<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
+				resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
+				<xforms:message level="modeless" ev:event="xforms-submit-error">Submit error.</xforms:message>
+			</xforms:submission>
+		</xforms:model>
+	</head>
 
-		<xforms:input ref="@timestamp">
-			<xforms:label>Timestamp</xforms:label>
-		</xforms:input>
-	</xforms:group>
+	<body>
 
-	<xforms:output ref="test" />
+		<xforms:group>
+			<xforms:input ref="test">
+				<xforms:label>Test Data</xforms:label>
+			</xforms:input>
 
-	<xforms:submit submission="output">
-		<xforms:label>Save As</xforms:label>
-	</xforms:submit>
+			<xforms:input ref="@timestamp">
+				<xforms:label>Timestamp</xforms:label>
+			</xforms:input>
+		</xforms:group>
 
-	<xforms:trigger>
-		<xforms:label>Reset</xforms:label>
-		<xforms:dispatch name="xforms-reset" target="default-model" ev:event="DOMActivate" />
-	</xforms:trigger>
+		<xforms:output ref="test" />
 
-</body>
+		<xforms:submit submission="output">
+			<xforms:label>Save As</xforms:label>
+		</xforms:submit>
+
+		<xforms:trigger>
+			<xforms:label>Reset</xforms:label>
+			<xforms:dispatch name="xforms-reset" target="default-model" ev:event="DOMActivate" />
+		</xforms:trigger>
+
+	</body>
 
 </html>
