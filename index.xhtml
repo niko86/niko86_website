@@ -5,7 +5,7 @@
     xmlns:ev="http://www.w3.org/2001/xml-events">
 
 <head>
-    <title>Your Title Here</title>
+    <title>Water Content</title>
     <xf:model>
 
         <xf:instance src="mc_template.xml" />
@@ -43,6 +43,8 @@
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
         </xf:action>
+
+        <xforms:variable name="filename" select="{//*[$local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}"/>
 
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
             resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file={//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}.xml">
