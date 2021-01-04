@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<keylab content="schedule" timestamp="2021-01-03T07:47:56" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
+<keylab content="results" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
   <test-definitions>
     <test-definition name="Water Content" code="WCS">
       <properties>
@@ -27,22 +27,25 @@
           <general>
             <readings>
               <reading>
-                <measurement name="AcceptedMassOfContainerAndDrySoil" value="93.69" />
+                <measurement name="AcceptedMassOfContainerAndDrySoil" value="" />
               </reading>
               <reading>
-                <measurement name="ContainerMass" value="16.29" />
+                <measurement name="ContainerMass" value="" />
               </reading>
               <reading>
-                <measurement name="DateOfTest" value="43913" />
+                <measurement name="DateOfTest" value="" />
               </reading>
               <reading>
-                <measurement name="MassContainerAndWetSoil" value="115.9" />
+                <measurement name="MassContainerAndWetSoil" value="" />
               </reading>
               <reading>
-                <measurement name="OvenTemperature" value="105" />
+                <measurement name="ContainerNumber" value="" />
               </reading>
               <reading>
-                <measurement name="SpecimenDescription" value="Brown slightly sandy CLAY" />
+                <measurement name="OvenTemperature" value="" />
+              </reading>
+              <reading>
+                <measurement name="SpecimenDescription" value="" />
               </reading>
             </readings>
           </general>

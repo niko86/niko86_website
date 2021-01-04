@@ -10,8 +10,35 @@
 
         <xf:instance src="mc_template.xml" />
 
-        <xf:bind id="xTimestamp" nodeset="@timestamp" type="xf:dateTime" />
-        <xf:bind id="xTest" nodeset="//[local-name()='test']" type="xf:string" />
+        <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" />
+
+        <xf:bind id="SpecimenDescription"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='SpecimenDescription']/@value"
+            type="xf:string" />
+
+        <xf:bind id="DateOfTest"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='DateOfTest']/@value"
+            type="xf:date" />
+
+        <xf:bind id="ContainerNumber"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='ContainerNumber']/@value"
+            type="xf:string" />
+
+        <xf:bind id="ContainerMass"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='ContainerMass']/@value"
+            type="xf:decimal" />
+
+        <xf:bind id="MassContainerAndWetSoil"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='MassContainerAndWetSoil']/@value"
+            type="xf:string" />
+
+        <xf:bind id="OvenTemperature"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='OvenTemperature']/@value"
+            type="xf:integer" />
+
+        <xf:bind id="AcceptedMassOfContainerAndDrySoil"
+            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
+            type="xf:decimal" />
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
@@ -26,21 +53,44 @@
 </head>
 
 <body>
-    <xf:input bind="xTest" incremental="true">
-        <xf:label>Input First Name:</xf:label>
-    </xf:input>
-    <br />
-    <xf:input bind="xTimestamp" incremental="true">
-        <xf:label>Input Last Name:</xf:label>
-    </xf:input>
-    <br />
-    <xf:output bind="xTest">
-        <xf:label>Output First Name:</xf:label>
-    </xf:output>
-    <br />
-    <xf:output bind="xTimestamp">
-        <xf:label>Output Last Name:</xf:label>
-    </xf:output>
+    <table>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td><xf:label>Time Stamp:</xf:label></td>
+            <td><xf:input bind="Timestamp" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Specimen Description:</xf:label></td>
+            <td><xf:textarea bind="SpecimenDescription" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Test Date:</xf:label></td>
+            <td><xf:input bind="DateOfTest" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Container Number:</xf:label></td>
+            <td><xf:input bind="ContainerNumber" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Container Mass:</xf:label></td>
+            <td><xf:input bind="ContainerMass" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Wet Mass:</xf:label></td>
+            <td><xf:input bind="MassContainerAndWetSoil" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Oven Temperature:</xf:label></td>
+            <td><xf:input bind="OvenTemperature" /></td>
+        </tr>
+        <tr>
+            <td><xf:label>Dry Mass:</xf:label></td>
+            <td><xf:input bind="AcceptedMassOfContainerAndDrySoil" /></td>
+        </tr>
+    </table>
 
     <xf:submit submission="output">
         <xf:label>Save As</xf:label>
