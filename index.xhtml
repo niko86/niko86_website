@@ -1,53 +1,53 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
 <?xsltforms-options debug="yes"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xforms="http://www.w3.org/2002/xforms"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
 	xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-	<head>
-		<title>Balance</title>
+<head>
+	<title>Balance</title>
 
-		<xforms:model>
-			<xforms:instance>
+	<xf:model>
+		<xf:instance>
 
-				<keylab content="results" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Import">
-					<test>Something</test>
-				</keylab>
+			<keylab content="results" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Import">
+				<test>Something</test>
+			</keylab>
 
-			</xforms:instance>
+		</xf:instance>
 
-			<xforms:bind id="TimeStamp" nodeset="@timestamp" type="xs:dateTime"/>
-			<xforms:bind id="Test" nodeset="//[local-name()='test']" type="xs:string"/>
+		<xf:bind id="bTimestamp" nodeset="@timestamp" type="xf:dateTime" />
+		<xf:bind id="bTest" nodeset="//[local-name()='test']" />
 
-			<xforms:submission id="output" method="xml-urlencoded-post" replace="none"
-				resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
-				<xforms:message level="modeless" ev:event="xforms-submit-error">Submit error.</xforms:message>
-			</xforms:submission>
-		</xforms:model>
-	</head>
+		<xf:submission id="output" method="xml-urlencoded-post" replace="none"
+			resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=mybalance.xml">
+			<xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
+		</xf:submission>
+	</xf:model>
+</head>
 
-	<body>
+<body>
 
-		<xforms:group>
-			<xforms:input ref="Test">
-				<xforms:label>Test Data</xforms:label>
-			</xforms:input>
+	<xf:group>
+		<xf:input ref="//[local-name()='test']">
+			<xf:label>Test Data</xf:label>
+		</xf:input>
 
-			<xforms:input ref="TimeStamp">
-				<xforms:label>Timestamp</xforms:label>
-			</xforms:input>
-		</xforms:group>
+		<xf:input ref="@timestamp">
+			<xf:label>Timestamp</xf:label>
+		</xf:input>
 
-		<xforms:output ref="test" />
+		<xf:output ref="//[local-name()='test']" />
 
-		<xforms:submit submission="output">
-			<xforms:label>Save As</xforms:label>
-		</xforms:submit>
+		<xf:submit submission="output">
+			<xf:label>Save As</xf:label>
+		</xf:submit>
 
-		<xforms:trigger>
-			<xforms:label>Reset</xforms:label>
-			<xforms:dispatch name="xforms-reset" target="default-model" ev:event="DOMActivate" />
-		</xforms:trigger>
+		<xf:trigger>
+			<xf:label>Reset</xf:label>
+			<xf:dispatch name="xf-reset" target="default-model" ev:event="DOMActivate" />
+		</xf:trigger>
+	</xf:group>
 
-	</body>
+</body>
 
 </html>
