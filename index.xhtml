@@ -44,7 +44,7 @@
             <xf:setfocus control="first-field" />
         </xf:action>
 
-        <xforms:variable name="filename" select="{//*[$local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}"/>
+        <xforms:variable name="filename" select="{//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}"/>
 
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
             resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file={//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/@id}.xml">
