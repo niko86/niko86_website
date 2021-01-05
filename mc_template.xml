@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-16"?>
 <keylab content="results" timestamp="" xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
   <test-definitions>
     <test-definition name="Water Content" code="WCS">
