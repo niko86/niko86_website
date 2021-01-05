@@ -39,6 +39,8 @@
             nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
             type="xf:decimal" />
 
+        <xf:bind id="MassWetSoil" calculate="(MassContainerAndWetSoil - ContainerMass)"
+
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
         </xf:action>
@@ -62,7 +64,7 @@
                 <xf:label>Time Stamp:</xf:label>
             </td>
             <td>
-                <xf:input bind="Timestamp" />
+                <xf:input bind="Timestamp" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -70,7 +72,7 @@
                 <xf:label>Specimen Description:</xf:label>
             </td>
             <td>
-                <xf:textarea bind="SpecimenDescription" />
+                <xf:textarea bind="SpecimenDescription" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -78,7 +80,7 @@
                 <xf:label>Test Date:</xf:label>
             </td>
             <td>
-                <xf:input bind="DateOfTest" />
+                <xf:input bind="DateOfTest" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -86,7 +88,7 @@
                 <xf:label>Container Number:</xf:label>
             </td>
             <td>
-                <xf:input bind="ContainerNumber" />
+                <xf:input bind="ContainerNumber" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -94,7 +96,7 @@
                 <xf:label>Container Mass:</xf:label>
             </td>
             <td>
-                <xf:input bind="ContainerMass" />
+                <xf:input bind="ContainerMass" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -102,7 +104,7 @@
                 <xf:label>Wet Mass:</xf:label>
             </td>
             <td>
-                <xf:input bind="MassContainerAndWetSoil" />
+                <xf:input bind="MassContainerAndWetSoil" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -110,7 +112,7 @@
                 <xf:label>Oven Temperature:</xf:label>
             </td>
             <td>
-                <xf:input bind="OvenTemperature" />
+                <xf:input bind="OvenTemperature" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -118,7 +120,7 @@
                 <xf:label>Dry Mass:</xf:label>
             </td>
             <td>
-                <xf:input bind="AcceptedMassOfContainerAndDrySoil" />
+                <xf:input bind="AcceptedMassOfContainerAndDrySoil" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -126,7 +128,7 @@
                 <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:output ref="AcceptedMassOfContainerAndDrySoil" />
+                <xf:output ref="MassWetSoil" incremental="true" />
             </td>
         </tr>
     </table>
