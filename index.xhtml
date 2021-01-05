@@ -39,9 +39,7 @@
             nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
             type="xf:decimal" />
         <xf:bind id="MassWetSoil" calculate="(../MassContainerAndWetSoil - ../ContainerMass)"
-        <xf:bind id="MassDrySoil" calculate="(../AcceptedMassOfContainerAndDrySoil - ../ContainerMass)"/>
-        <xf:bind id="MassMoisture" calculate="(../MassWetSoil - ../MassDrySoil) div ../MassDrySoil"/>
-        <xf:bind id="CalculatedMoistureContent" calculate="round(../MassMoisture * 100)"/>
+
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
@@ -130,7 +128,7 @@
                 <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:output ref="CalculatedMoistureContent" />
+                <xf:output ref="MassWetSoil" />
             </td>
         </tr>
     </table>
