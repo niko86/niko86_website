@@ -39,10 +39,6 @@
             nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
             type="xf:decimal" />
 
-        <xf:bind id="MassWetSoil"
-            nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']"
-            calculate="/*[local-name()='reading']/*[local-name()='measurement'][@name='MassContainerAndWetSoil']/@value - /*[local-name()='reading']/*[local-name()='measurement'][@name='ContainerMass']/@value" />
-
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
         </xf:action>
@@ -130,7 +126,7 @@
                 <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:output ref="MassWetSoil" incremental="true" />
+                <xf:output ref="MassWetSoil" />
             </td>
         </tr>
     </table>
