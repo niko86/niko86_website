@@ -12,11 +12,11 @@
         <script type="application/xml" src="demo.xml">
         </script>
       </xforms-instance>
-      <xforms-bind xf-id="GivenName" xf-nodeset="PersonGivenName"></xforms-bind>
+      <xforms-bind xf-id="GivenName" xf-nodeset="PersonGivenName" />
     </xforms-model>
     <p>Type your first name in the input box. <br>
       If you are running XForms, the output should be displayed in the output area.</p>
-    <xforms-input xf-ref="GivenName" xf-incremental="true">
+    <xforms-input xf-bind="GivenName" xf-incremental="true">
       <xforms-label>Please enter your first name: </xforms-label>
     </xforms-input>
     <br>
