@@ -39,7 +39,7 @@
             nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
             type="xf:decimal" />
 
-        <xf:bind id="MassWater" calculate="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil" />
+        <xf:bind id="MassWater" nodeset="OvenTemperature" />
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
@@ -64,7 +64,7 @@
                 <xf:label>Time Stamp:</xf:label>
             </td>
             <td>
-                <xf:input bind="Timestamp" incremental="true" />
+                <xf:input bind="Timestamp" />
             </td>
         </tr>
         <tr>
@@ -80,7 +80,7 @@
                 <xf:label>Test Date:</xf:label>
             </td>
             <td>
-                <xf:input bind="DateOfTest" incremental="true" />
+                <xf:input bind="DateOfTest" />
             </td>
         </tr>
         <tr>
