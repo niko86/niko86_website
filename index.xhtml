@@ -39,7 +39,7 @@
             nodeset="//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value"
             type="xf:decimal" />
 
-        <xf:bind id="MassWater" calculate="(MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil)" />
+        <xf:bind id="MassWater" calculate="(//*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='MassContainerAndWetSoil']/@value - //*[local-name()='project']/*[local-name()='samples']/*[local-name()='sample']/*[local-name()='test']/*[local-name()='general']/*[local-name()='readings']/*[local-name()='reading']/*[local-name()='measurement'][@name='AcceptedMassOfContainerAndDrySoil']/@value)" />
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
