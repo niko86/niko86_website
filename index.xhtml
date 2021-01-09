@@ -31,7 +31,7 @@
                 ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" type="xf:decimal" />
 
             <xf:bind id="MassWater"
-                value="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
+                calculate="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
         </xf:bind>
 
 
