@@ -9,6 +9,7 @@
         <property name="ContainerNumber" unit="" />
         <property name="OvenTemperature" unit="" />
         <property name="SpecimenDescription" unit="" />
+        <property name="MoistureContent" unit="" />
       </properties>
     </test-definition>
   </test-definitions>
@@ -45,6 +46,9 @@
               </reading>
               <reading>
                 <measurement name="SpecimenDescription" value="" />
+              </reading>
+              <reading>
+                <measurement name="MoistureContent" value="" />
               </reading>
             </readings>
           </general>
