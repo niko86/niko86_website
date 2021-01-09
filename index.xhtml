@@ -2,38 +2,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:kl="http://www.keynetix.com/XSD/KeyLAB/Export"
-    kl:xmlns="http://www.keynetix.com/XSD/KeyLAB/Export">
+    kl:xmlns="http://www.keynetix.com/XSD/KeyLAB/Export" 
+    xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/  http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd  http://www.w3.org/2002/xforms  http://www.w3.org/MarkUp/Forms/2002/XForms-Schema.xsd">
 
 <head>
     <title>Water Content</title>
-    <xf:model id="base-model">
+    <xf:model id="main-model">
 
         <xf:instance src="mc_template.xml" />
 
-        <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" />
-        <xf:bind ref="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
-            
-            <xf:bind id="SpecimenDescription" ref="kl:measurement[@name='SpecimenDescription']/@value"
+        <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" calculate="now()" readonly="true()" />
+
+        <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
+            <xf:bind 
+                id="SpecimenDescription" 
+                nodeset="kl:measurement[@name='SpecimenDescription']/@value"
                 type="xf:string" />
 
-            <xf:bind id="DateOfTest" ref="kl:measurement[@name='DateOfTest']/@value" type="xf:date" />
+            <xf:bind 
+                id="DateOfTest" 
+                nodeset="kl:measurement[@name='DateOfTest']/@value" 
+                type="xf:date" />
 
-            <xf:bind id="ContainerNumber" ref="kl:measurement[@name='ContainerNumber']/@value" type="xf:string" />
+            <xf:bind 
+                id="ContainerNumber" 
+                nodeset="kl:measurement[@name='ContainerNumber']/@value" 
+                type="xf:string" />
 
-            <xf:bind id="ContainerMass" ref="kl:measurement[@name='ContainerMass']/@value" type="xf:decimal" />
-
-            <xf:bind id="MassContainerAndWetSoil" ref="kl:measurement[@name='MassContainerAndWetSoil']/@value"
+            <xf:bind 
+                id="ContainerMass" 
+                nodeset="kl:measurement[@name='ContainerMass']/@value" 
                 type="xf:decimal" />
 
-            <xf:bind id="OvenTemperature" ref="kl:measurement[@name='OvenTemperature']/@value" type="xf:integer" />
+            <xf:bind 
+                id="MassContainerAndWetSoil" 
+                nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value"
+                type="xf:decimal" />
 
-            <xf:bind id="AcceptedMassOfContainerAndDrySoil"
-                ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" type="xf:decimal" />
+            <xf:bind 
+                id="OvenTemperature" 
+                nodeset="kl:measurement[@name='OvenTemperature']/@value" 
+                type="xf:integer" />
 
-            <xf:bind id="MoistureContent" ref="kl:measurement[@name='MoistureContent']/@value" type="xf:decimal"
+            <xf:bind 
+                id="AcceptedMassOfContainerAndDrySoil"
+                nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
+                type="xf:decimal" />
+
+            <xf:bind 
+                id="MoistureContent" 
+                nodeset="kl:measurement[@name='MoistureContent']/@value" 
+                type="xf:decimal" 
                 calculate="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
         </xf:bind>
-
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
@@ -58,7 +79,7 @@
                 <xf:label>Time Stamp:</xf:label>
             </td>
             <td>
-                <xf:input bind="Timestamp" />
+                <xf:input id="first-field" bind="Timestamp" />
             </td>
         </tr>
         <tr>
@@ -119,22 +140,23 @@
         </tr>
         <tr>
             <td>
-                <xf:label>Mass Water:</xf:label>
+                <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:output ref="MassWater" />
+                <xf:var name="reading"
+                    value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading" />
+                <xf:output value="$reading/kl:measurement[@name='MoistureContent']/@value" />
             </td>
         </tr>
     </table>
 
     <xf:submit submission="output">
         <xf:label>Save As</xf:label>
-        <xf:recalculate target="base-model" />
     </xf:submit>
 
     <xf:trigger>
         <xf:label>Reset</xf:label>
-        <xf:dispatch name="xf-reset" target="base-model" ev:event="DOMActivate" />
+        <xf:dispatch name="xf-reset" target="main-model" ev:event="DOMActivate" />
     </xf:trigger>
 
 </body>
