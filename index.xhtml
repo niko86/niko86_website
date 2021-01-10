@@ -136,8 +136,8 @@
             </td>
             <td>
                 <xf:var name="reading" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading"/>
-                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" ev:event="xforms-value-changed" value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
-                <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" ev:event="xforms-value-changed" />
+                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" model="main-model" value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
+                <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
             </td>
         </tr>
     </table>
