@@ -54,16 +54,17 @@
                 id="MoistureContent" 
                 ref="kl:measurement[@name='MoistureContent']/@value" 
                 type="xf:decimal" />
+
+                <xf:action ev:event="xforms-recalculate">
+                    <xf:setvalue ref="kl:measurement[@name='MoistureContent']/@value" value="kl:measurement[@name='MassContainerAndWetSoil'] - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil'] "/>
+                    <xf:message level="modal">xforms-recalculate</xf:message>
+                </xf:action>
         </xf:bind>
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
         </xf:action>
         
-        <xf:action ev:event="xforms-recalculate">
-            <xf:setvalue bind="MoistureContent" value="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil"/>
-            <xf:message level="modal">xforms-recalculate</xf:message>
-        </xf:action>
         
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
             resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=keylab_output.xml">
