@@ -11,55 +11,62 @@
 
         <xf:instance src="mc_template.xml" />
 
-        <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" calculate="now()" />
-
+        <xf:bind id="Timestamp" ref="@timestamp" type="xf:dateTime" calculate="now()" readonly="true()" />
+        <!-- <xf:setvalue ref="@timestamp" ev:event="xforms-ready">{now()}</xf:setvalue> -->
+        
         <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
             <xf:bind 
                 id="SpecimenDescription" 
-                nodeset="kl:measurement[@name='SpecimenDescription']/@value"
+                ref="kl:measurement[@name='SpecimenDescription']/@value"
                 type="xf:string" />
 
             <xf:bind 
                 id="DateOfTest" 
-                nodeset="kl:measurement[@name='DateOfTest']/@value" 
+                ref="kl:measurement[@name='DateOfTest']/@value" 
                 type="xf:date" />
 
             <xf:bind 
                 id="ContainerNumber" 
-                nodeset="kl:measurement[@name='ContainerNumber']/@value" 
+                ref="kl:measurement[@name='ContainerNumber']/@value" 
                 type="xf:string" />
 
             <xf:bind 
                 id="ContainerMass" 
-                nodeset="kl:measurement[@name='ContainerMass']/@value" 
+                ref="kl:measurement[@name='ContainerMass']/@value" 
                 type="xf:decimal" />
 
             <xf:bind 
                 id="MassContainerAndWetSoil" 
-                nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value"
+                ref="kl:measurement[@name='MassContainerAndWetSoil']/@value"
                 type="xf:decimal" />
 
             <xf:bind 
                 id="OvenTemperature" 
-                nodeset="kl:measurement[@name='OvenTemperature']/@value" 
+                ref="kl:measurement[@name='OvenTemperature']/@value" 
                 type="xf:integer" />
 
             <xf:bind 
                 id="AcceptedMassOfContainerAndDrySoil"
-                nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
+                ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
                 type="xf:decimal" />
-
+            
+            <!--
             <xf:bind 
                 id="MoistureContent" 
-                nodeset="kl:measurement[@name='MoistureContent']/@value" 
+                ref="kl:measurement[@name='MoistureContent']/@value" 
                 type="xf:decimal" 
                 calculate="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
+            -->
         </xf:bind>
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
         </xf:action>
-
+        
+        <!--<xf:action ev:event="xforms-recalculate">
+            <xf:message level="modal">xforms-recalculate</xf:message>
+        </xf:action>-->
+        
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
             resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=keylab_output.xml">
             <xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
@@ -79,7 +86,7 @@
                 <xf:label>Specimen Description:</xf:label>
             </td>
             <td>
-                <xf:textarea bind="SpecimenDescription" incremental="true" />
+                <xf:textarea id="first-field" bind="SpecimenDescription" incremental="true" />
             </td>
         </tr>
         <tr>
@@ -135,9 +142,10 @@
                 <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:var name="reading"
-                    value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading" />
-                <xf:output value="$reading/kl:measurement[@name='MoistureContent']/@value" />
+                <xf:var name="reading" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading"/>
+                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" ev:event="xforms-value-changed" 
+                    value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
+                <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
             </td>
         </tr>
     </table>
