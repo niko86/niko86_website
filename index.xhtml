@@ -27,15 +27,19 @@
         
         <xf:bind id="ContainerMass" nodeset="kl:measurement[@name='ContainerMass']/@value"
           type="xf:decimal"/>
-
+        
+        <xf:bind id="MassContainerAndWetSoil"
+          nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value" type="xf:decimal"/>
         
         <xf:bind id="OvenTemperature" nodeset="kl:measurement[@name='OvenTemperature']/@value"
           type="xf:integer"/>
         
-
+        <xf:bind 
+          nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          type="xf:decimal"/>
         
         <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
-          calculate="../../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
           type="xf:decimal"/>
         
       </xf:bind>
@@ -96,7 +100,7 @@
           <xf:label>Wet Mass:</xf:label>
         </td>
         <td>
-          <xf:input ref="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value" incremental="true"/>
+          <xf:input bing="MassContainerAndWetSoil" incremental="true"/>
         </td>
       </tr>
       <tr>
@@ -112,7 +116,7 @@
           <xf:label>Dry Mass:</xf:label>
         </td>
         <td>
-          <xf:input ref="$reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" incremental="true"/>
+          <xf:input ref="AcceptedMassOfContainerAndDrySoil" incremental="true"/>
         </td>
       </tr>
       <tr>
