@@ -16,6 +16,7 @@
       <!-- <xf:setvalue ref="@timestamp" ev:event="xforms-ready">{now()}</xf:setvalue> -->
 
       <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
+
         <xf:bind id="SpecimenDescription"
           nodeset="kl:measurement[@name='SpecimenDescription']/@value" type="xf:string"/>
 
@@ -38,8 +39,9 @@
           type="xf:decimal"/>
 
         <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
-          calculate="../../kl:reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - ../../kl:reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          calculate="../../kl:measurement[@name='MassContainerAndWetSoil']/@value"
           type="xf:decimal"/>
+
       </xf:bind>
 
       <xf:action ev:event="xforms-ready">
