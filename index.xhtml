@@ -27,16 +27,12 @@
         
         <xf:bind id="ContainerMass" nodeset="kl:measurement[@name='ContainerMass']/@value"
           type="xf:decimal"/>
-        
-        <xf:bind id="MassContainerAndWetSoil"
-          nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value" type="xf:decimal"/>
+
         
         <xf:bind id="OvenTemperature" nodeset="kl:measurement[@name='OvenTemperature']/@value"
           type="xf:integer"/>
         
-        <xf:bind 
-          nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
-          type="xf:decimal"/>
+
         
         <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
           calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
