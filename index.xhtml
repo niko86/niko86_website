@@ -136,8 +136,7 @@
                 <xf:label>Moisture Content:</xf:label>
             </td>
             <td>
-                <xf:var name="reading" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading"/>
-                <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
+                <xf:output bind="MoistureContent" />
             </td>
         </tr>
     </table>
