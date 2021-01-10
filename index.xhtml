@@ -38,7 +38,7 @@
           type="xf:decimal"/>
 
         <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
-          calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          calculate="../../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
           type="xf:decimal"/>
       </xf:bind>
 
