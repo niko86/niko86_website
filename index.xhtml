@@ -53,7 +53,7 @@
                 <xf:bind 
                     id="MoistureContent" 
                     ref="kl:measurement[@name='MoistureContent']/@value" 
-                    value="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+                    calculate="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil"
                     type="xf:decimal" />
             </xf:bind>
             
@@ -136,7 +136,7 @@
                     <xf:label>Moisture Content:</xf:label>
                 </td>
                 <td>
-                    <xf:output ref="MoistureContent" />
+                    <xf:output bind="MoistureContent" />
                 </td>
             </tr>
         </table>
