@@ -11,48 +11,48 @@
             
             <xf:instance src="mc_template.xml" />
             
-            <xf:bind id="Timestamp" ref="@timestamp" type="xf:dateTime" calculate="now()" readonly="true()" />
+            <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" calculate="now()" readonly="true()" />
             <!-- <xf:setvalue ref="@timestamp" ev:event="xforms-ready">{now()}</xf:setvalue> -->
             
             <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
                 <xf:bind 
                     id="SpecimenDescription" 
-                    ref="kl:measurement[@name='SpecimenDescription']/@value"
+                    nodeset="kl:measurement[@name='SpecimenDescription']/@value"
                     type="xf:string" />
                 
                 <xf:bind 
                     id="DateOfTest" 
-                    ref="kl:measurement[@name='DateOfTest']/@value" 
+                    nodeset="kl:measurement[@name='DateOfTest']/@value" 
                     type="xf:date" />
                 
                 <xf:bind 
                     id="ContainerNumber" 
-                    ref="kl:measurement[@name='ContainerNumber']/@value" 
+                    nodeset="kl:measurement[@name='ContainerNumber']/@value" 
                     type="xf:string" />
                 
                 <xf:bind 
                     id="ContainerMass" 
-                    ref="kl:measurement[@name='ContainerMass']/@value" 
+                    nodeset="kl:measurement[@name='ContainerMass']/@value" 
                     type="xf:decimal" />
                 
                 <xf:bind 
                     id="MassContainerAndWetSoil" 
-                    ref="kl:measurement[@name='MassContainerAndWetSoil']/@value"
+                    nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value"
                     type="xf:decimal" />
                 
                 <xf:bind 
                     id="OvenTemperature" 
-                    ref="kl:measurement[@name='OvenTemperature']/@value" 
+                    nodeset="kl:measurement[@name='OvenTemperature']/@value" 
                     type="xf:integer" />
                 
                 <xf:bind 
                     id="AcceptedMassOfContainerAndDrySoil"
-                    ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
+                    nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
                     type="xf:decimal" />
                 
                 <xf:bind 
                     id="MoistureContent" 
-                    ref="kl:measurement[@name='MoistureContent']/@value" 
+                    nodeset="kl:measurement[@name='MoistureContent']/@value" 
                     calculate="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil"
                     type="xf:decimal" />
             </xf:bind>
