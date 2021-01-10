@@ -53,8 +53,9 @@
                 <xf:bind 
                     id="MoistureContent" 
                     nodeset="kl:measurement[@name='MoistureContent']/@value" 
-                    calculate="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil"
-                    type="xf:decimal" />
+                    type="xf:decimal" >
+                    <xf:bind calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
+                </xf:bind>
             </xf:bind>
             
             <xf:action ev:event="xforms-ready">
@@ -136,7 +137,8 @@
                     <xf:label>Moisture Content:</xf:label>
                 </td>
                 <td>
-                    <xf:output bind="MoistureContent" ev-event="" />
+                    <xf:output bind="MoistureContent" />
+
                 </td>
             </tr>
         </table>
