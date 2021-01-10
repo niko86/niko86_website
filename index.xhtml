@@ -28,18 +28,13 @@
         <xf:bind id="ContainerMass" nodeset="kl:measurement[@name='ContainerMass']/@value"
           type="xf:decimal"/>
 
-        <xf:bind id="MassContainerAndWetSoil"
-          nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value" type="xf:decimal"/>
 
         <xf:bind id="OvenTemperature" nodeset="kl:measurement[@name='OvenTemperature']/@value"
           type="xf:integer"/>
 
-        <xf:bind id="AcceptedMassOfContainerAndDrySoil"
-          nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
-          type="xf:decimal"/>
 
         <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
-          calculate="../../kl:measurement[@name='MassContainerAndWetSoil']/@value + 1"
+          calculate="../../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
           type="xf:decimal"/>
 
       </xf:bind>
@@ -57,6 +52,9 @@
   </head>
 
   <body>
+      <xf:group ref="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
+
+      
     <table>
       <tr>
         <th>Property</th>
@@ -99,7 +97,7 @@
           <xf:label>Wet Mass:</xf:label>
         </td>
         <td>
-          <xf:input bind="MassContainerAndWetSoil" incremental="true"/>
+          <xf:input ref="kl:measurement[@name='MassContainerAndWetSoil']/@value" incremental="true"/>
         </td>
       </tr>
       <tr>
@@ -115,7 +113,7 @@
           <xf:label>Dry Mass:</xf:label>
         </td>
         <td>
-          <xf:input bind="AcceptedMassOfContainerAndDrySoil" incremental="true"/>
+          <xf:input ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" incremental="true"/>
         </td>
       </tr>
       <tr>
@@ -127,7 +125,7 @@
         </td>
       </tr>
     </table>
-
+</xf:group>
     <button sid="recalculateX">
       <xforms:trigger>
         <xforms:label>Recalculate</xforms:label>
