@@ -61,7 +61,7 @@
         </xf:action>
         
         <xf:action ev:event="xforms-recalculate">
-            <xf:setvalue ref="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading/kl:measurement[@name='MoistureContent']/@value" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
+            
             <xf:message level="modal">xforms-recalculate</xf:message>
         </xf:action>
         
@@ -141,6 +141,7 @@
             </td>
             <td>
                 <xf:var name="reading" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading"/>
+                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" ev:event="xforms-value-changed" value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
                 <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
             </td>
         </tr>
