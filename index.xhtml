@@ -50,19 +50,14 @@
                 ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
                 type="xf:decimal" />
             
-            <!--<xf:bind 
+            <xf:bind 
                 id="MoistureContent" 
                 ref="kl:measurement[@name='MoistureContent']/@value" 
-                type="xf:decimal" />-->
+                type="xf:decimal" />
         </xf:bind>
 
         <xf:action ev:event="xforms-ready">
             <xf:setfocus control="first-field" />
-        </xf:action>
-        
-        <xf:action ev:event="xforms-recalculate">
-            
-            <xf:message level="modal">xforms-recalculate</xf:message>
         </xf:action>
         
         <xf:submission id="output" method="xml-urlencoded-post" replace="none"
