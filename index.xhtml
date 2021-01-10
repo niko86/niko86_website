@@ -57,7 +57,7 @@
   </head>
 
   <body>
-      <xf:group ref="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
+    <xf:var name="reading" value="klab:project/klab:samples/klab:sample/klab:test/klab:general/klab:readings/klab:reading"/>
 
       
     <table>
@@ -102,7 +102,7 @@
           <xf:label>Wet Mass:</xf:label>
         </td>
         <td>
-          <xf:input ref="kl:measurement[@name='MassContainerAndWetSoil']/@value" incremental="true"/>
+          <xf:input ref="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value" incremental="true"/>
         </td>
       </tr>
       <tr>
@@ -118,7 +118,7 @@
           <xf:label>Dry Mass:</xf:label>
         </td>
         <td>
-          <xf:input ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" incremental="true"/>
+          <xf:input ref="$reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" incremental="true"/>
         </td>
       </tr>
       <tr>
