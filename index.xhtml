@@ -136,10 +136,17 @@
                     <xf:label>Moisture Content:</xf:label>
                 </td>
                 <td>
-                    <xf:output bind="MoistureContent" />
+                    <xf:output bind="MoistureContent" ev-event="" />
                 </td>
             </tr>
         </table>
+
+        <button sid="recalculateX">
+            <xforms:trigger>
+               <xforms:label>Recalculate</xforms:label>
+               <xforms:recalculate ev:event="DOMActivate" model="main-model"/>
+            </xforms:trigger>
+         </button>
         
         <xf:submit submission="output">
             <xf:label>Save As</xf:label>
