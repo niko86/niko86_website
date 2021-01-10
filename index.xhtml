@@ -1,164 +1,147 @@
 <?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:kl="http://www.keynetix.com/XSD/KeyLAB/Export"
-    kl:xmlns="http://www.keynetix.com/XSD/KeyLAB/Export" 
-    xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/  http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd  http://www.w3.org/2002/xforms  http://www.w3.org/MarkUp/Forms/2002/XForms-Schema.xsd">
-    
-    <head>
-        <title>Water Content</title>
-        <xf:model id="main-model">
-            
-            <xf:instance src="mc_template.xml" />
-            
-            <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" calculate="now()" readonly="true()" />
-            <!-- <xf:setvalue ref="@timestamp" ev:event="xforms-ready">{now()}</xf:setvalue> -->
-            
-            <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
-                <xf:bind 
-                    id="SpecimenDescription" 
-                    nodeset="kl:measurement[@name='SpecimenDescription']/@value"
-                    type="xf:string" />
-                
-                <xf:bind 
-                    id="DateOfTest" 
-                    nodeset="kl:measurement[@name='DateOfTest']/@value" 
-                    type="xf:date" />
-                
-                <xf:bind 
-                    id="ContainerNumber" 
-                    nodeset="kl:measurement[@name='ContainerNumber']/@value" 
-                    type="xf:string" />
-                
-                <xf:bind 
-                    id="ContainerMass" 
-                    nodeset="kl:measurement[@name='ContainerMass']/@value" 
-                    type="xf:decimal" />
-                
-                <xf:bind 
-                    id="MassContainerAndWetSoil" 
-                    nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value"
-                    type="xf:decimal" />
-                
-                <xf:bind 
-                    id="OvenTemperature" 
-                    nodeset="kl:measurement[@name='OvenTemperature']/@value" 
-                    type="xf:integer" />
-                
-                <xf:bind 
-                    id="AcceptedMassOfContainerAndDrySoil"
-                    nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
-                    type="xf:decimal" />
-                
-                <xf:bind 
-                    id="MoistureContent" 
-                    nodeset="kl:measurement[@name='MoistureContent']/@value" 
-                    type="xf:decimal" >
-                    <xf:bind calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
-                </xf:bind>
-            </xf:bind>
-            
-            <xf:action ev:event="xforms-ready">
-                <xf:setfocus control="first-field" />
-            </xf:action>
-            
-            <xf:submission id="output" method="xml-urlencoded-post" replace="none"
-                resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=keylab_output.xml">
-                <xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
-            </xf:submission>
-            
-        </xf:model>
-    </head>
-    
-    <body>
-        <table>
-            <tr>
-                <th>Property</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Specimen Description:</xf:label>
-                </td>
-                <td>
-                    <xf:textarea id="first-field" bind="SpecimenDescription" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Test Date:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="DateOfTest" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Container Number:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="ContainerNumber" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Container Mass:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="ContainerMass" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Wet Mass:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="MassContainerAndWetSoil" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Oven Temperature:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="OvenTemperature" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Dry Mass:</xf:label>
-                </td>
-                <td>
-                    <xf:input bind="AcceptedMassOfContainerAndDrySoil" incremental="true" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <xf:label>Moisture Content:</xf:label>
-                </td>
-                <td>
-                    <xf:output bind="MoistureContent" />
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:kl="http://www.keynetix.com/XSD/KeyLAB/Export"
+  kl:xmlns="http://www.keynetix.com/XSD/KeyLAB/Export"
+  xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/  http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd  http://www.w3.org/2002/xforms  http://www.w3.org/MarkUp/Forms/2002/XForms-Schema.xsd">
 
-                </td>
-            </tr>
-        </table>
+  <head>
+    <title>Water Content</title>
+    <xf:model id="main-model">
 
-        <button sid="recalculateX">
-            <xforms:trigger>
-               <xforms:label>Recalculate</xforms:label>
-               <xforms:recalculate ev:event="DOMActivate" model="main-model"/>
-            </xforms:trigger>
-         </button>
-        
-        <xf:submit submission="output">
-            <xf:label>Save As</xf:label>
-        </xf:submit>
-        
-        <xf:trigger>
-            <xf:label>Reset</xf:label>
-            <xf:dispatch name="xf-reset" target="main-model" ev:event="DOMActivate" />
-        </xf:trigger>
-        
-    </body>
-    
+      <xf:instance src="mc_template.xml"/>
+
+      <xf:bind id="Timestamp" nodeset="@timestamp" type="xf:dateTime" calculate="now()"
+        readonly="true()"/>
+      <!-- <xf:setvalue ref="@timestamp" ev:event="xforms-ready">{now()}</xf:setvalue> -->
+
+      <xf:bind nodeset="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading">
+        <xf:bind id="SpecimenDescription"
+          nodeset="kl:measurement[@name='SpecimenDescription']/@value" type="xf:string"/>
+
+        <xf:bind id="DateOfTest" nodeset="kl:measurement[@name='DateOfTest']/@value" type="xf:date"/>
+
+        <xf:bind id="ContainerNumber" nodeset="kl:measurement[@name='ContainerNumber']/@value"
+          type="xf:string"/>
+
+        <xf:bind id="ContainerMass" nodeset="kl:measurement[@name='ContainerMass']/@value"
+          type="xf:decimal"/>
+
+        <xf:bind id="MassContainerAndWetSoil"
+          nodeset="kl:measurement[@name='MassContainerAndWetSoil']/@value" type="xf:decimal"/>
+
+        <xf:bind id="OvenTemperature" nodeset="kl:measurement[@name='OvenTemperature']/@value"
+          type="xf:integer"/>
+
+        <xf:bind id="AcceptedMassOfContainerAndDrySoil"
+          nodeset="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          type="xf:decimal"/>
+
+        <xf:bind id="MoistureContent" nodeset="kl:measurement[@name='MoistureContent']/@value"
+          calculate="../kl:measurement[@name='MassContainerAndWetSoil']/@value - ../kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"
+          type="xf:decimal"/>
+      </xf:bind>
+
+      <xf:action ev:event="xforms-ready">
+        <xf:setfocus control="first-field"/>
+      </xf:action>
+
+      <xf:submission id="output" method="xml-urlencoded-post" replace="none"
+        resource="xsltforms/txs.php?exec=returnasattachment.txs&amp;file=keylab_output.xml">
+        <xf:message level="modeless" ev:event="xf-submit-error">Submit error.</xf:message>
+      </xf:submission>
+
+    </xf:model>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <th>Property</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Specimen Description:</xf:label>
+        </td>
+        <td>
+          <xf:textarea id="first-field" bind="SpecimenDescription" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Test Date:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="DateOfTest"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Container Number:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="ContainerNumber" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Container Mass:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="ContainerMass" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Wet Mass:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="MassContainerAndWetSoil" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Oven Temperature:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="OvenTemperature" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Dry Mass:</xf:label>
+        </td>
+        <td>
+          <xf:input bind="AcceptedMassOfContainerAndDrySoil" incremental="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xf:label>Moisture Content:</xf:label>
+        </td>
+        <td>
+          <xf:output bind="MoistureContent"/>
+        </td>
+      </tr>
+    </table>
+
+    <button sid="recalculateX">
+      <xforms:trigger>
+        <xforms:label>Recalculate</xforms:label>
+        <xforms:recalculate ev:event="DOMActivate" model="main-model"/>
+      </xforms:trigger>
+    </button>
+
+    <xf:submit submission="output">
+      <xf:label>Save As</xf:label>
+    </xf:submit>
+
+    <xf:trigger>
+      <xf:label>Reset</xf:label>
+      <xf:dispatch name="xf-reset" target="main-model" ev:event="DOMActivate"/>
+    </xf:trigger>
+
+  </body>
+
 </html>
