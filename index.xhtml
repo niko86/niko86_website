@@ -50,13 +50,10 @@
                 ref="kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" 
                 type="xf:decimal" />
             
-            <!--
             <xf:bind 
                 id="MoistureContent" 
                 ref="kl:measurement[@name='MoistureContent']/@value" 
-                type="xf:decimal" 
-                calculate="kl:measurement[@name='MassContainerAndWetSoil']/@value - kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
-            -->
+                type="xf:decimal" />
         </xf:bind>
 
         <xf:action ev:event="xforms-ready">
@@ -64,8 +61,7 @@
         </xf:action>
         
         <xf:action ev:event="xforms-recalculate">
-                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" ev:event="xforms-value-changed" 
-                    value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
+            <xf:setvalue ref="MoistureContent" value="MassContainerAndWetSoil - AcceptedMassOfContainerAndDrySoil"/>
             <xf:message level="modal">xforms-recalculate</xf:message>
         </xf:action>
         
@@ -145,8 +141,6 @@
             </td>
             <td>
                 <xf:var name="reading" value="kl:project/kl:samples/kl:sample/kl:test/kl:general/kl:readings/kl:reading"/>
-                <xf:setvalue ref="$reading/kl:measurement[@name='MoistureContent']/@value" ev:event="xforms-value-changed" 
-                    value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value"/>
                 <xf:output value="$reading/kl:measurement[@name='MassContainerAndWetSoil']/@value - $reading/kl:measurement[@name='AcceptedMassOfContainerAndDrySoil']/@value" />
             </td>
         </tr>
